@@ -1,0 +1,22 @@
+function iniciarContagemRegressiva(segundos) {
+    if (isNaN(segundos) || segundos <= 0) {
+        console.log("Por favor, informe um número de segundos válido.");
+        return;
+    }
+
+    console.log("Iniciando contagem regressiva...");
+
+    const intervalo = setInterval(() => {
+        segundos--;
+        if (segundos > 0) {
+            console.log(segundos + " segundos restantes...");
+        } else {
+            clearInterval(intervalo);
+            console.log("BUMMM!");
+            
+        }
+    }, 1000);
+}
+
+// Exemplo de uso:
+iniciarContagemRegressiva(7);
