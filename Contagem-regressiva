@@ -18,5 +18,4 @@ function iniciarContagemRegressiva(segundos) {
     }, 1000);
 }
 
-// Exemplo de uso:
 iniciarContagemRegressiva(7);
