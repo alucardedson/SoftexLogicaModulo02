@@ -1,0 +1,51 @@
+function calculadora(num1, num2, operacao) {
+  /*
+  Calcula o resultado de uma operação matemática com base no número da operação.
+
+  Parâmetros:
+    num1 (number): O primeiro número da operação.
+    num2 (number): O segundo número da operação.
+    operacao (number): Número da operação a ser realizada:
+
+    1 - Soma
+    2 - Subtração
+    3 - Multiplicação
+    4 - Divisão
+
+  Retorna:
+    number: O resultado da operação ou 0 se a operação não existir.
+  */
+  switch (operacao) {
+    case 1:
+      return num1 + num2;
+    case 2:
+      return num1 - num2;
+    case 3:
+      return num1 * num2;
+    case 4:
+      if (num2 !== 0) {
+        return num1 / num2;
+      } else {
+        console.error("Erro: Divisão por zero não é permitida.");
+        return 0;
+      }
+    default:
+      console.error("Erro: Operação inválida.");
+      return 0;
+  }
+}
+let resultado = calculadora(5, 5, 1); // Realiza a soma de 5 + 5
+console.log(resultado); // Output: 8
+
+resultado = calculadora(10, 3, 2); // Realiza a subtração de 10 - 3
+console.log(resultado);
+
+resultado = calculadora(2, 3, 3); // Realiza a multiplicação de 2 * 3
+console.log(resultado);
+
+resultado = calculadora(20, 2, 4); // Realiza a divisão de 20 / 2
+console.log(resultado);
+
+resultado = calculadora(5, 0, 4); // Tenta realizar divisão por zero imprime o erro e retorna 0
+
+
