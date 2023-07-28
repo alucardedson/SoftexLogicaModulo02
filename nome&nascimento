@@ -1,0 +1,19 @@
+function obterIdadeUsuario() {
+  let nomeCompleto = prompt("Digite seu nome completo:");
+  let anoNascimento = prompt("Digite seu ano de nascimento (entre 1922 e 2021):");
+  anoNascimento = parseInt(anoNascimento);
+
+  // Verificar se o ano de nascimento é inválido
+  if (isNaN(anoNascimento) || anoNascimento < 1922 || anoNascimento > 2021) {
+    alert("Ano de nascimento inválido. Digite novamente.");
+    // Chamada recursiva para tentar novamente
+    return obterIdadeUsuario();
+  }
+
+  let anoAtual = new Date().getFullYear();
+  let idade = anoAtual - anoNascimento;
+
+  alert(`Olá, ${nomeCompleto}! Em 2022, você completou ou completará ${idade} anos.`);
+}
+
+obterIdadeUsuario();
