@@ -1,0 +1,64 @@
+function votacao() {
+  let candidatos = {
+    889: { nome: "Candidato_X", votos: 0 },
+    847: { nome: "Candidato_Y", votos: 0 },
+    515: { nome: "Candidato_Z", votos: 0 },
+    nuloOuBranco: { nome: "Voto Nulo ou Branco", votos: 0 },
+  };
+
+  while (true) {
+    console.log("\nCandidatos e seus números:");
+    for (const numero in candidatos) {
+      if (numero !== "nuloOuBranco") {
+        console.log(`${numero} - ${candidatos[numero].nome}`);
+      }
+    }
+
+    let voto = prompt(
+      "Digite o número do candidato que deseja votar (ou qualquer outro número para voto em branco/nulo):"
+    );
+
+    let votoInt = parseInt(voto);
+    if (!isNaN(votoInt) && votoInt in candidatos) {
+      candidatos[votoInt].votos++;
+      console.log(`Voto para o ${candidatos[votoInt].nome} registrado.`);
+    } else {
+      candidatos.nuloOuBranco.votos++;
+      console.log("Voto em branco/nulo registrado.");
+    }
+
+    let finalizar = prompt("Deseja finalizar a votação? (s/n):");
+    if (finalizar.toLowerCase() === "s") {
+      break;
+    }
+  }
+
+  console.log("\nResultado da votação:");
+  for (const numero in candidatos) {
+    if (numero !== "nuloOuBranco") {
+      console.log(`${candidatos[numero].nome}: ${candidatos[numero].votos}`);
+    }
+  }
+  console.log(`Votos nulos/brancos: ${candidatos.nuloOuBranco.votos}`);
+
+  let vencedor = "nuloOuBranco";
+  let maxVotos = 0;
+  for (const numero in candidatos) {
+    if (numero !== "nuloOuBranco" && candidatos[numero].votos > maxVotos) {
+      vencedor = candidatos[numero].nome;
+      maxVotos = candidatos[numero].votos;
+    } else if (candidatos[numero].votos === maxVotos) {
+      vencedor = "Empate";
+    }
+  }
+
+  if (vencedor === "Voto Nulo ou Branco") {
+    console.log("Não houve vencedor.");
+  } else if (vencedor === "Empate") {
+    console.log("Houve um empate entre os candidatos.");
+  } else {
+    console.log(`O vencedor é: ${vencedor}`);
+  }
+}
+
+votacao();
